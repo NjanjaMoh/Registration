@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="STOCK" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="6e843fe2-ce72-4257-a4c3-1df03728dc95">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select product.prod_details as 'product Details',productprices.Amount as 'Amount',product_in_transaction.productquantity as 'Quantity',(productprices.Amount*product_in_transaction.productquantity) as 'Order Amount' from product_in_transaction, productprices,product
+ where product.prodid=productprices.prodid and productprices.saletypeid and 
+ product_in_transaction.prodid=product.prodid and productprices.saletypeid=1;]]>
+	</queryString>
+	<field name="product Details" class="java.lang.String"/>
+	<field name="Amount" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Quantity" class="java.lang.Integer"/>
+	<field name="Order Amount" class="java.lang.Double"/>
+	<field name="COLUMN_0" class="java.lang.String"/>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement x="283" y="10" width="100" height="20" uuid="5690652e-261f-4e0c-8b20-249b966f2f7d"/>
+				<text><![CDATA[User List]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="20" uuid="62045ae6-f549-4f4b-9ff1-6d5ef948b32b"/>
+				<text><![CDATA[COLUMN_0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="10" width="100" height="20" uuid="e3fc199f-ce8e-4607-99d3-9109dd12abca"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="10" width="100" height="20" uuid="c41f0cb0-b0cf-4d21-b159-5944913a5235"/>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="10" width="100" height="20" uuid="167e1eba-ac1c-460a-ab39-4c45b1863a33"/>
+				<text><![CDATA[Order Amount]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="112" y="4" width="100" height="20" uuid="a8c0e457-ced0-44e3-94f6-6fd453a3dcd6"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="4" width="100" height="20" uuid="d899d3fd-8178-4adc-922b-31ff6831a223"/>
+				<textFieldExpression><![CDATA[$F{Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="4" width="100" height="20" uuid="84cceb07-5c3a-48d7-a44f-c5f1f20249b0"/>
+				<textFieldExpression><![CDATA[$F{Order Amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="7" width="100" height="20" uuid="e48962d2-378e-45d9-922a-1b2d3cd1a7eb"/>
+				<text><![CDATA[COLUMN_0]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
